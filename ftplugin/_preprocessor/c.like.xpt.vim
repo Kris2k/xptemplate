@@ -18,7 +18,7 @@ XSET me=fileRoot()
 #include "`me^.h"
 
 
-XPT #ind alias=#include_user
+XPT #ins alias=#include_user
 
 
 XPT #if wrap " #if ..
