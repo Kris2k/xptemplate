@@ -483,11 +483,17 @@ let s:f.UE = s:f.UnescapeMarks
 
 
 fun! s:f.headerSymbol(...) "{{{
-  let h = expand('%:t')
+  let h = substitute(expand('%:t'),'\.\(h\|hpp\)$','','') " remove taling .h or .hpp
+  let h = substitute(h,'-','_','g') " replace - with _
   let h = substitute(h, '\.', '_', 'g') " replace . with _
   let h = substitute(h, '.', '\U\0', 'g') " make all characters upper case
+  let nh = 0
+  for ii in range(strlen(h))
+      let nh = (nh *10) + char2nr(h[ii])
+  endfor
+  let rnd = xor(nh%0xffff, reltime()[0])
 
-  return '__'.h.'__'
+  return h.'_'.rnd.'_'.reltime()[1].'_H'
 endfunction "}}}
 
 
