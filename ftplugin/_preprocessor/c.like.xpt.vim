@@ -42,7 +42,7 @@ XPT #ifndef wrap	" #ifndef ..
 XPT once wrap	" #ifndef .. #define ..
 XSET symbol=headerSymbol()
 #ifndef `symbol^
-#     define `symbol^
+#define `symbol^
 
 `cursor^
 #endif `$CL^ `symbol^ `$CR^
