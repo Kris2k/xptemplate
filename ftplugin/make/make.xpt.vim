@@ -73,4 +73,29 @@ XPT basevar " CC ... CFLAG ..
 `lang^C^C := `compiler^gcc^
 `lang^C^FLAGS := `switches^-Wall -Wextra^
 
+XPT bsd0make
+PROG=vg_mem_parse
+SRCS=parse-mem-maps.c
+MAN=
+CFLAGS=-g
+.include <bsd.prog.mk>
+
+XPT bsd1make
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99
+LDFLAGS = -lutil
+
+TARGET := ipc-main
+all: $(TARGET)
+
+.SUFFIXES: .c .o
+.c.o:
+        $(CC) $(CFLAGS) -c $< -o $@
+
+$(TARGET): ipc-main.o
+        $(CC) $(LDFLAGS) $(>) -o $@
+
+clean:
+        -rm -rf *.o $(TARGET)
+
 
