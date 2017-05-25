@@ -110,6 +110,11 @@ XSET elts|pre=Echo('')
 XSET elts=c_printf_elts( R( 'pattern' ), ' '[ len( $SPop ) : ] )
 printf "~pattern^"~elts^
 
+XPT vars " special variables explanation
+# $@, $*   # all aruments of script/function
+# $1,..,$9 # n-th argument of script
+# $?       # return value of last executed command
+# $$       # pid of current process
 
 XPT usage " usage function
 PROGRAM=${0}
