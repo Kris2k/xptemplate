@@ -68,10 +68,36 @@ ifeq (`what^, `with^)
     `cursor^
 `}}^endif
 
+XPT vars-gmake " special gnu make variables
+# $(@F), $(@D), $@  # name of directory,file,of the target  during rule execution
+# $<, $\^           # name of first/all prereqisite in rule
+# $+                # name of all prerequisites but with duplicates removed
+# $?                # name of all prereqisite newer than target, for archive only new mebers
+# $|                # name of all order only depencies
+# $*                # name of steam(%) matches in rule e.g.
+#                   #    for target 'dir/a.foo.b' and the steam 'a.%.b' result is 'dir/foo'.
 
+XPT vars-bmake " special bsd make variables
+# bsd make is pmake doc here https://www.freebsd.org/doc/en/books/pmake/index.html
+# cwd != pwd        # cwd will hold execution of shell command (pwd) in this case
+# ${.TARGET}, $@    # name of  the target  during rule execution
+# $(@F), $(@D), $@  # old form name of directory,file,of the target  during rule execution
+# ${@:T}, ${@:H}    # same as above :T is last componant of name :H is first component of name
+# ${VAR:Mpattern}   # select word matching  pattern (shell wildcard work) from VAR
+# ${VAR:Npattern}   # select word not matching  pattern (shell wildcard work) from VAR
+# ${VAR:tA}         # attempt to convert VAR to realpath, if don't work lave it alone
+# ${VAR:S/old/new/} # subsitue VAR old to new, accepted flags 1, only first replace, g all occurences
+# ${VAR:C/old/new/} # subsitue VAR old to new using extended regexp
+# $<, $\^           # name of first/all prereqisite in rule
+# $+                # name of all prerequisites but with duplicates removed
+# $?                # name of all prereqisite newer than target, for archive only new mebers
+# $|                # name of all order only depencies
+# $*                # name of steam(%) matches in rule e.g.
+#                   #    for target 'dir/a.foo.b' and the steam 'a.%.b' result is 'dir/foo'.
 XPT basevar " CC ... CFLAG ..
 `lang^C^C := `compiler^gcc^
 `lang^C^FLAGS := `switches^-Wall -Wextra^
+
 
 XPT bsd0make
 PROG=vg_mem_parse
