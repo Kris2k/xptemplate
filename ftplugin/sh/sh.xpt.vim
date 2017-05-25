@@ -111,6 +111,46 @@ XSET elts=c_printf_elts( R( 'pattern' ), ' '[ len( $SPop ) : ] )
 printf "~pattern^"~elts^
 
 
+XPT usage " usage function
+PROGRAM=${0}
+usage(){
+cat <<EOF
+    Usage: ${PROGRAM} [options] text
+
+    options:
+    -h, --help             dispaly this help
+    -d, --dir=directory    cow directory [default] ${COW_DIR}
+
+    text                   text the cows should display
+EOF
+}
+
+XPT getopt
+OPTIONS=$(getopt -o hd: --long help,dir: -- "$@")
+if [ $? != 0 ] ; then
+    echo "Parse options error  ..."
+    usage
+    exit 1
+fi
+eval set -- "$OPTIONS"
+
+while true ; do
+    case "$1" in
+    -h|--help)
+        usage
+        exit 0
+        shift
+        ;;
+    -d|--dir)
+        DIR=$2
+        shift 2
+        ;;
+    --)
+        shift
+        break
+    esac
+done
+
 
 XPT forin wrap " for .. in ..; do
 for ~i^ in ~list^;~$BRloop^do
