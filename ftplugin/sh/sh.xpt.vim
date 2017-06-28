@@ -133,7 +133,7 @@ EOF
 XPT getopt
 OPTIONS=$(getopt -o hd: --long help,dir: -- "$@")
 if [ $? != 0 ] ; then
-    echo "Parse options error  ..."
+    echo "Parse options error  ..." 1>&2
     usage
     exit 1
 fi
@@ -155,6 +155,13 @@ while true ; do
         break
     esac
 done
+# if at least one agument is needed even after getopt
+if [ $# -lt 1 ] ; then
+    echo "Not enough arguments" 1>&2
+    usage
+    exit 1
+fi
+
 
 
 XPT forin wrap " for .. in ..; do
