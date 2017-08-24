@@ -136,14 +136,14 @@ targets+=$(CXX_targets)
 
 all: $(targets)
 
-CXXFLAGS:=-Wall -Wextra -pedantic -ggdb
-CXXLDFLAGS:=-Wall -Wextra -pedantic -ggdb
+CXX_FLAGS:=-Wall -Wextra -pedantic -ggdb
+CXX_LDFLAGS:=-Wall -Wextra -pedantic -ggdb
 
 $(CXX_objects): %.o : %.cpp
-	g++ -c $(CXXFLAGS) $< -o $@
+	$(CXX) -c $(CXX_FLAGS) $< -o $@
 
 $(CXX_targets): % : $(patsubst %,%.o,%)
-	g++ $(CXXLDFLAGS)  -o $@ $<
+	$(CXX) $(CXX_LDFLAGS)  -o $@ $<
 
 clean:
 	-rm $(targets) $(CXX_objects)
