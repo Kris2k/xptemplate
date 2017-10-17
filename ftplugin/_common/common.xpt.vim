@@ -497,6 +497,9 @@ fun! s:f.headerSymbol(...) "{{{
 endfunction "}}}
 
 
+fun! s:f.almostiso8601date(...) "{{{
+  return strftime('%Y-%m-%dT%H:%M %z')
+endfunction "}}}
 
 fun! s:f.date(...) "{{{
   return strftime( self.GetVar( '$DATE_FMT' ) )
@@ -689,6 +692,7 @@ endfunction
 call XPTdefineSnippet('Author', {}, '`$author^')
 call XPTdefineSnippet('Email', {}, '`$email^')
 call XPTdefineSnippet("Date", {}, "`date()^")
+call XPTdefineSnippet("date", {}, "`almostiso8601date()^")
 call XPTdefineSnippet("File", {}, "`file()^")
 call XPTdefineSnippet("Path", {}, "`path()^")
 
