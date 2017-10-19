@@ -497,8 +497,16 @@ fun! s:f.headerSymbol(...) "{{{
 endfunction "}}}
 
 
-fun! s:f.almostiso8601date(...) "{{{
+fun! s:f.debiandate(...) "{{{  almostiso8601date
   return strftime('%Y-%m-%dT%H:%M %z')
+endfunction "}}}
+
+fun! s:f.notedate(...) "{{{
+  return strftime('%Y-%m-%d %a')
+endfunction "}}}
+
+fun! s:f.notetime(...) "{{{
+  return strftime('%H:%M')
 endfunction "}}}
 
 fun! s:f.date(...) "{{{
@@ -692,7 +700,9 @@ endfunction
 call XPTdefineSnippet('Author', {}, '`$author^')
 call XPTdefineSnippet('Email', {}, '`$email^')
 call XPTdefineSnippet("Date", {}, "`date()^")
-call XPTdefineSnippet("date", {}, "`almostiso8601date()^")
+call XPTdefineSnippet("debianDate", {}, "`debiandate()^")
+call XPTdefineSnippet("notedate", {}, "`notedate()^")
+call XPTdefineSnippet("notetime", {}, "`notetime()^")
 call XPTdefineSnippet("File", {}, "`file()^")
 call XPTdefineSnippet("Path", {}, "`path()^")
 
