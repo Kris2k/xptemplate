@@ -89,11 +89,17 @@ XPT _shebang hidden " #!/bin/$_xSnipName
 
 ..XPT
 
+XPT set_euo_pipefail " set -euo pipefail
+set -euo pipefail # set exit on error, error use unitialized pipe fail error propagates
+
+..XPT
+
 
 XPT sh   alias=_shebang
 XPT bash alias=_shebang
 XPT zsh  alias=_shebang
 XPT csh  alias=_shebang
+XPT sane  alias=set_euo_pipefail
 
 
 XPT echodate " echo `date +%...`
