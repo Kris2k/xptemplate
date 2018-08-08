@@ -71,7 +71,19 @@ XPT malloc " malloc ( ... );
 XPT assert	" assert (.., msg)
 assert(`$SParg^`isTrue^,`$SPop^"`text^"`$SParg^)
 
+XPT compile_printf " print sizeof structure
+static void kaboom_print( void )
+{
+		char (*__kaboom)[sizeof( `cursor^ )] ;
+		printf( "%d", __kaboom );
+}
 
+XPT static-sizeof " print sizeof structure
+static void kaboom_print( void )
+{
+		char (*__kaboom)[sizeof( `cursor^ )] ;
+		printf( "%d", __kaboom );
+}
 XPT fcomment
 /**
  * @author : `$author^ | `$email^
