@@ -6,3 +6,4 @@ doc/tags
 src/personal/
 xpt/
 xpt-*.tgz
+.projectLite.vim
