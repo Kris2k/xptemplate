@@ -46,3 +46,9 @@ XSET symbol=headerSymbol()
 
 `cursor^
 #endif `$CL^ `symbol^ `$CR^
+
+
+XPT Stringify " stringify c token
+#define xstr(a) str(a)
+#define str(a) #a
+
