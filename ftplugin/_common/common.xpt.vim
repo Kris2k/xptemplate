@@ -51,7 +51,7 @@ XPTvar $SPcmd      ' '
 XPTvar $SPop       ' '
 
 
-XPTvar $DATE_FMT     '%Y %b %d'
+XPTvar $DATE_FMT     '%Y %m %d'
 XPTvar $TIME_FMT     '"%H:%M:%S"'
 XPTvar $DATETIME_FMT '%c'
 
@@ -501,6 +501,10 @@ fun! s:f.debiandate(...) "{{{  almostiso8601date
   return strftime('%Y-%m-%dT%H:%M %z')
 endfunction "}}}
 
+fun! s:f.tim(...) "{{{
+  return strftime('%H:%M')
+endfunction "}}}
+
 fun! s:f.notedate(...) "{{{
   return strftime('%Y-%m-%d %a')
 endfunction "}}}
@@ -702,6 +706,7 @@ call XPTdefineSnippet('Email', {}, '`$email^')
 call XPTdefineSnippet("Date", {}, "`date()^")
 call XPTdefineSnippet("debianDate", {}, "`debiandate()^")
 call XPTdefineSnippet("notedate", {}, "`notedate()^")
+call XPTdefineSnippet("tim", {}, "`tim()^")
 call XPTdefineSnippet("notetime", {}, "`notetime()^")
 call XPTdefineSnippet("File", {}, "`file()^")
 call XPTdefineSnippet("Path", {}, "`path()^")
