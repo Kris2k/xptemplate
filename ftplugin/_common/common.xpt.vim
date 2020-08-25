@@ -51,7 +51,7 @@ XPTvar $SPcmd      ' '
 XPTvar $SPop       ' '
 
 
-XPTvar $DATE_FMT     '%Y %m %d'
+XPTvar $DATE_FMT     '%Y-%m-%d'
 XPTvar $TIME_FMT     '"%H:%M:%S"'
 XPTvar $DATETIME_FMT '%c'
 
